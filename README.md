@@ -1,3 +1,24 @@
+# ⚠️ Why the fork ⚠️
+
+FILE: react-autocomplete/lib/Autocomplete.js - Line 424
+`global` create a runtime error when the project is build in production (not in dev mode)
+```js
+const computedStyle = global.window.getComputedStyle(node)
+```
+ERROR:
+```
+index-fdb32d08f5590e34960f.js:62 TypeError: Cannot read property 'getComputedStyle' of undefined
+    at t.value (index-fdb32d08f5590e34960f.js:102)
+    at t.value (index-fdb32d08f5590e34960f.js:102)
+    at commitLifeCycles (index-fdb32d08f5590e34960f.js:62)
+    at t (index-fdb32d08f5590e34960f.js:62)
+    at x (index-fdb32d08f5590e34960f.js:62)
+    at _ (index-fdb32d08f5590e34960f.js:62)
+    at batchedUpdates (index-fdb32d08f5590e34960f.js:62)
+    at st (index-fdb32d08f5590e34960f.js:62)
+    at Jt (index-fdb32d08f5590e34960f.js:62)
+```
+
 # React Autocomplete [![Travis build status](https://travis-ci.org/reactjs/react-autocomplete.svg?branch=master)](https://travis-ci.org/reactjs/react-autocomplete/)
 
 Accessible, extensible, Autocomplete for React.js.
